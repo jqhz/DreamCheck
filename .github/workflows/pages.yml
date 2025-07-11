@@ -1,0 +1,51 @@
+name: "pages"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    # ─── 1. Expose your GitHub Secrets as ENV VARS ───────────────────────
+    env:
+      VITE_FIREBASE_API_KEY:           ${{ secrets.VITE_FIREBASE_API_KEY }}
+      VITE_FIREBASE_AUTH_DOMAIN:       ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+      VITE_FIREBASE_PROJECT_ID:        ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+      VITE_FIREBASE_STORAGE_BUCKET:    ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+      VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      VITE_FIREBASE_APP_ID:            ${{ secrets.VITE_FIREBASE_APP_ID }}
+
+    environment:
+      name: "Dream Check"
+      url: ${{ steps.deploy_to_pages.outputs.github_pages_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ─── 2. Inject them into a .env file ────────────────────────────────
+      - name: Create .env for Vite
+        run: |
+          echo "VITE_FIREBASE_API_KEY=$VITE_FIREBASE_API_KEY"           >> .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=$VITE_FIREBASE_AUTH_DOMAIN"   >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=$VITE_FIREBASE_PROJECT_ID"     >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=$VITE_FIREBASE_STORAGE_BUCKET" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=$VITE_FIREBASE_MESSAGING_SENDER_ID" >> .env
+          echo "VITE_FIREBASE_APP_ID=$VITE_FIREBASE_APP_ID"             >> .env
+        shell: bash
+
+      - name: Github Pages deploy
+        uses: skywarth/vite-github-pages-deployer@v1.5.0
+        with:
+          public_base_path: "/"
