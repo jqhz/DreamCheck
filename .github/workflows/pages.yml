@@ -48,4 +48,4 @@ jobs:
       - name: Github Pages deploy
         uses: skywarth/vite-github-pages-deployer@v1.5.0
         with:
-          public_base_path: "/"
+          public_base_path: "/DreamCheck/"
