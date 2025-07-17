@@ -43,11 +43,11 @@ const Login = ({ onLogin }) => {
       <div className="relative flex-1 w-full flex flex-col items-center justify-center min-h-0" style={{minHeight: `calc(100vh - ${NAVBAR_HEIGHT}px)`}}>
         {/* Background GIF */}
         <img
-          src="/dream-bg.gif"
+          src={`${import.meta.env.BASE_URL}dream-bg.gif`}
           alt="Dream background"
           className="absolute top-0 left-0 w-full h-full object-cover object-top z-0 select-none pointer-events-none"
           style={{ minHeight: '100%', minWidth: '100%' }}
-        />
+        />  
         {/* Overlay for readability */}
         <div className="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-40 z-10" />
         {/* Main login card */}
