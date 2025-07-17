@@ -28,7 +28,7 @@ jobs:
       VITE_FIREBASE_APP_ID:            ${{ secrets.VITE_FIREBASE_APP_ID }}
 
     environment:
-      name: "Dream Check"
+      name: "github-pages"
       url: ${{ steps.deploy_to_pages.outputs.github_pages_url }}
 
     steps:
