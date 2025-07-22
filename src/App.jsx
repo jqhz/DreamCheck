@@ -3,6 +3,7 @@ import Login from "./Login";
 import DreamCheck from "./DreamCheck";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import "./App.css"; // Ensure you import your CSS
 
 function App() {
   const [user, setUser] = useState(null);

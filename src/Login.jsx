@@ -25,7 +25,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="relative min-h-screen w-full flex flex-col overflow-hidden">
       {/* Navbar */}
-      <nav className="relative z-20 w-full flex items-center justify-between px-8 py-4 bg-white bg-opacity-80 backdrop-blur border-b border-gray-300" style={{height: NAVBAR_HEIGHT}}>
+      <nav className="relative z-20 w-full flex items-center justify-between px-8 py-4 bg-[#242424] bg-opacity-80 backdrop-blur border-b border-gray-300" style={{height: NAVBAR_HEIGHT}}>
         <div className="flex items-center gap-3">
           {/* Placeholder logo (SVG) */}
           <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 text-white font-bold text-2xl mr-2">🌙</span>
@@ -52,7 +52,7 @@ const Login = ({ onLogin }) => {
         <div className="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-40 z-10" />
         {/* Main login card */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[calc(100vh-80px)]">
-          <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col items-center mt-12">
+          <div className="bg-rose-100 p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col items-center mt-12">
             <h2 className="text-3xl font-bold text-center text-indigo-700 mb-8">DreamCheck</h2>
             <button
               onClick={handleGoogleSignIn}
