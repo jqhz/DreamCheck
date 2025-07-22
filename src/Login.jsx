@@ -49,7 +49,7 @@ const Login = ({ onLogin }) => {
           style={{ minHeight: '100%', minWidth: '100%' }}
         />  
         {/* Overlay for readability */}
-        <div className="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-40 z-10" />
+        {/* <div className="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-40 z-10" /> */}
         {/* Main login card */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[calc(100vh-80px)]">
           <div className="bg-rose-100 p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col items-center mt-12">
